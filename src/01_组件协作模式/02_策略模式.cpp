@@ -67,7 +67,9 @@ class TaxOrder
     BaseTax *strategy = nullptr;
 
   public:
-    int TaxOrderFunc(string countryName) //一般策略模式的策略中心的对象的创建，会用工厂模式给替代，这里为了纯粹的演示策略模式本身，不用工厂
+    // 一般策略模式的策略中心的对象的创建，会用工厂模式给替代，这里为了纯粹的演示策略模式本身，不用工厂
+    // 当用上了工厂模式，这里的new都可以挪到外面去，这里就没有各种if-else的new对象了，都是统一接口
+    int TaxOrderFunc(string countryName) 
     {
         if (countryName == "CN") {
             strategy = new CNTax();
@@ -84,7 +86,6 @@ class TaxOrder
 
 int main()
 {
-
     TaxOrder center;
     int tax = center.TaxOrderFunc("CN");
     cout<<tax<<endl;
